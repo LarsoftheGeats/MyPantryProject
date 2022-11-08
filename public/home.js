@@ -14,7 +14,7 @@ function myTimerFnc() {
     let index
     axios.get(baseURL+"recipestuff")
     .then((res) => {
-        console.log(res.data)
+        //console.log(res.data)
         ingredientsBox.innerHTML = res.data.ingredients
         recipeBox.innerHTML = res.data.recipe
         index = res.data.image

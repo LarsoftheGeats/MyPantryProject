@@ -1,6 +1,10 @@
 const path = require("path")
 const recipe = require("../recipes/recipe.json")
 
+
+//Documentation
+//landingPage sends home page
+//getRecipe gets a random Recipe, TODO refactore
 module.exports = {
     landingPage: (req,res) => {
         res.sendFile(path.join(__dirname,"./../../public/home.html"))
@@ -9,7 +13,7 @@ module.exports = {
     getRecipe: (req,res) => {
         
         index=Math.floor(Math.random()*4)
-        console.log(recipe[index])
+        //console.log(recipe[index])
         res.send(recipe[index])
     },
 

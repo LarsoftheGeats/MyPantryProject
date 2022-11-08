@@ -5,8 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!--TODO CSS for this page-->
 </head>
 <body>
+    <!--TODO Banner along the top-->
+    <!--TODO horizontal navbar for this page-->
     <nav>
 		<ul>
 	        <li class="crumb"><a href="/">Home</a></li>
@@ -18,6 +21,18 @@
 	</nav>
     PAAAANTRY RAID
 
-    
+    <!--TODO Flexbox these puppies-->
+    <section id= "ingredients"></section>
+    <article id = "recipe"></article>
+    <aside id = "yummy-view"></aside>
+    <form id = "add-items" action="submit">
+        Food:<input id= "food1" type="text">   Quantity <input id ="quantity1" type="text">
+        <button id="submit-food">submit</button>
+    </form>
+
+    <button id="pause">Pause</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
+    <script src="pantry.js"></script>
 </body>
 </html>
