@@ -1,0 +1,25 @@
+[
+    {
+        "recipe": "random text",
+        "ingredients": ["2 cans of chicken soup", "1 leek", "paprika"],
+        "image":1
+    },
+
+    {
+        "recipe": "random text2",
+        "ingredients": ["2 cans of chicken soup", "1 leek", "paprika"],
+        "image":2
+    },
+
+    {
+        "recipe": "random text3",
+        "ingredients": ["2 cans of chicken soup", "1 leek", "paprika"],
+        "image":3
+    },
+
+    {
+        "recipe": "random text4",
+        "ingredients": ["2 cans of chicken soup", "1 leek", "paprika"],
+        "image":4
+    }
+]
