@@ -15,7 +15,8 @@ app.use(cors(corsOptions));
 const {landingPage, 
     getRecipe, 
     getPicture,
-    getPantry
+    getPantry,
+    updatePantry
 } = require("./controller/pageControl.js")
 
 
@@ -29,6 +30,7 @@ app.get("/", landingPage )
 app.get("/recipestuff",getRecipe)
 app.get("/jpg:id",getPicture)
 app.get("/pantrydata",getPantry)
+app.put("/pantry",updatePantry)
 
 
 app.listen(port, () => console.log(`Server listening on ${port}`))

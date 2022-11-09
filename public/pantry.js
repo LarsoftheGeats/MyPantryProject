@@ -10,9 +10,7 @@ const quantityInputText = []
 quantityInputText.push(document.getElementById("quantity1"))
 const baseURL = `http://localhost:5050/`
 
-function createFoodCar(foodItem){
-    
-}
+
 
 function renderPantry (pantryArr) {
     for (let i =0; i < pantryArr.length; i++){
@@ -20,15 +18,46 @@ function renderPantry (pantryArr) {
     }
 }
 
+function clearPantry () {
+    ingredientsBox.innerHTML =``
+}
+
+function createFoodCard(foodItem){
+    let foodCard = document.createElement('div')
+    foodCard.classList.add('food-card')
+    let {ingredients, quantity, expiration,id} = foodItem
+    foodCard.innerHTML = 
+    `<p>ingredient: ${ingredients} <br>
+    <button onclick="updateQuantity(${id}, 'minus')">-</button>
+    quantity: ${quantity} 
+    <button onclick="updateQuantity(${id}, 'plus')">+</button>
+    <br>
+    expiration ${expiration}</p>`
+    ingredientsBox.appendChild(foodCard)
+}
+
+function updateQuantity(id, type){
+    let postBody = {
+        id:id,
+        type:type
+    }
+    axios.put("/pantry",postBody)
+    .then( (res) => {
+        clearPantry()
+        renderPantry(res.data)
+    } ).catch ((err) => {
+        console.log(err)
+    })
+}
+
 function addIngredients (evt) {
     evt.preventDefault()
 }
 
 function getPantry() {
-    axios.get(baseURL+"pantrydata")
+    axios.get("/pantrydata")
     .then((res) => {
-        console.log(res.data)
-        //renderPantry
+        renderPantry(res.data)
     })//axios then block
     .catch((err) => {
         console.log(err)

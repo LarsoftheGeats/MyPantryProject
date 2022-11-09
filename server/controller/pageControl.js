@@ -28,8 +28,29 @@ module.exports = {
 
     getPantry:(req,res) => {
         res.send(pantry)
+    },
+
+    updatePantry: (req,res) => {
+        const {id, type} = req.body
+        if (type === "minus"){
+            for (let i =0; i< pantry.length; i++){
+                if (pantry[i].id === id){
+                    pantry[i].quantity -=1
+                    if (pantry[i].quantity === 0){
+                        pantry.splice(i,1)
+                    }
+                }
+            }
+            
+
+        }
+        if (type === "plus"){
+            for (let i =0; i < pantry.length; i++){
+                if (pantry[i].id === id){
+                    pantry[i].quantity +=1
+                }
+            }
+        }
+        res.send(pantry)
     }
-
-
-    
 }
