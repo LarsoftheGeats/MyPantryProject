@@ -12,7 +12,7 @@ const baseURL = `http://localhost:5050/`
 //timer that periodically serves a random recipe
 function myTimerFnc() {
     let index
-    axios.get(baseURL+"recipestuff")
+    axios.get("/recipestuff")
     .then((res) => {
         //console.log(res.data)
         ingredientsBox.innerHTML = res.data.ingredients
