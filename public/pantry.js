@@ -10,10 +10,24 @@ const quantityInputText = []
 quantityInputText.push(document.getElementById("quantity1"))
 const baseURL = `http://localhost:5050/`
 
+
+
+
 function addIngredients (evt) {
     evt.preventDefault()
 
 }
 
+function getPantry() {
+    axios.get(baseURL+"pantrydata")
+    .then((res) => {
+        console.log(res.data)
+    })//axios then block
+    .catch((err) => {
+        console.log(err)
+    })//axios catch block
+}
+
+getPantry()
 addIngredientsButton.addEventListener("click",addIngredients)
 //add button listeners 

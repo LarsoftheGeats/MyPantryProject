@@ -1,0 +1,38 @@
+[
+    {
+        "ingredients": "olives",
+        "quantity": 1,
+        "expiration": null,
+        "id": 1
+    },
+    {
+        "ingredients": "chicken stock",
+        "quantity": 3,
+        "expiration": null,
+        "id": 2
+    },
+    {
+        "ingredients": "pasta noodles",
+        "quantity": 2,
+        "expiration": null,
+        "id": 3
+    },
+    {
+        "ingredients": "chicken breasts",
+        "quantity": 4,
+        "expiration": null,
+        "id": 4
+    },
+    {
+        "ingredients": "milk",
+        "quantity": 1,
+        "expiration": "11/20/22",
+        "id": 5
+    },
+    {
+        "ingredients": "peanut butter",
+        "quantity": 1,
+        "expiration": "1/25/23",
+        "id": 6
+    }
+]

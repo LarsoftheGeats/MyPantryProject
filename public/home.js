@@ -47,6 +47,6 @@ function togglePause(evt){
 }
 
 
-let myTimer = setInterval(myTimerFnc, 5000);
+let myTimer = setInterval(myTimerFnc, 1000);
 //randomly page through various pictures of recipes
 pauseButton.addEventListener("click",togglePause)

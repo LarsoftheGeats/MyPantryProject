@@ -1,5 +1,6 @@
 const path = require("path")
-const recipe = require("../recipes/recipe.json")
+const recipe = require("../data/recipe.json")
+const pantry = require("../data/pantry.json")
 
 
 //Documentation
@@ -23,6 +24,10 @@ module.exports = {
         console.log(id)
         // console.log(path.join( __dirname, `./../recipes/recipeImages/meal${id}.jpg`))
         // res.sendFile(path.join( __dirname, `./../recipes/recipeImages/meal${id}.jpg`))
+    },/*TODO decide to add/remove this tag*/
+
+    getPantry:(req,res) => {
+        res.send(pantry)
     }
 
 
