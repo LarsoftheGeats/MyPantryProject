@@ -10,18 +10,25 @@ const quantityInputText = []
 quantityInputText.push(document.getElementById("quantity1"))
 const baseURL = `http://localhost:5050/`
 
+function createFoodCar(foodItem){
+    
+}
 
-
+function renderPantry (pantryArr) {
+    for (let i =0; i < pantryArr.length; i++){
+        createFoodCard(pantryArr[i])
+    }
+}
 
 function addIngredients (evt) {
     evt.preventDefault()
-
 }
 
 function getPantry() {
     axios.get(baseURL+"pantrydata")
     .then((res) => {
         console.log(res.data)
+        //renderPantry
     })//axios then block
     .catch((err) => {
         console.log(err)
