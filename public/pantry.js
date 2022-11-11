@@ -52,11 +52,48 @@ function updateQuantity(id, type){
 
 function addIngredients (evt) {
     evt.preventDefault()
+    console.log("submit")
+    let postBody = {
+        quantityItems:0,
+        items:[]
+    }
+    //TODO add expiration to HTML 
+    //TODO add type to food type
+    let foodItem ={
+        itemName:"",
+        quantity:0,
+        expiration: ""
+    }
+    for (let i =0; i<foodInputText.length; i++){
+        if (!(foodInputText[i].value==="")&&!(quantityInputText[i].value==="")&&!(quantityInputText[i].value===0))
+        {
+            foodItem.itemName=foodInputText[i].value
+            foodItem.quantity=Number.parseFloat(quantityInputText[i].value)
+            postBody.quantityItems++
+            postBody.items.push(foodItem)
+            foodInputText[i].value = ''
+            quantityInputText[i].value= ''
+        }
+    }
+    //console.log(postBody)//functional
+    axios.post("addPantry",postBody)
+    .then( (res) => {
+        clearPantry()
+        renderPantry(res.data)
+
+    })//then block
+    .catch( (err) => {
+        console.log(err)
+    })
+    
+    
+
 }
 
 function getPantry() {
     axios.get("/pantrydata")
     .then((res) => {
+        clearPantry()
         renderPantry(res.data)
     })//axios then block
     .catch((err) => {
@@ -66,4 +103,19 @@ function getPantry() {
 
 getPantry()
 addIngredientsButton.addEventListener("click",addIngredients)
+foodInputText[0].addEventListener("keyup", (evt) => {
+    evt.preventDefault()
+    console.log("nameEnter")
+    if (evt.keyCode ===13){
+        quantityInputText[0].focus()
+    }
+})
+
+quantityInputText[0].addEventListener("keyup", (evt) => {
+    evt.preventDefault()
+    console.log("#enter")
+    if (evt.keyCode ===13){
+        foodInputText[0].focus()
+    }
+})
 //add button listeners 

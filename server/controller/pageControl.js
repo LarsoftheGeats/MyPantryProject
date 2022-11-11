@@ -1,6 +1,7 @@
 const path = require("path")
 const recipe = require("../data/recipe.json")
 const pantry = require("../data/pantry.json")
+let pantryId=7
 
 
 //Documentation
@@ -18,6 +19,28 @@ module.exports = {
         res.send(recipe[index])
     },
 
+    addPantry: (req,res) => {
+       //console.log(req.body) 
+    //    console.log(req.body)
+       let pantryItem = {
+        ingredients:"",
+        quantity:0,
+        expiration:"",
+        id:null
+       }
+       const {quantityItems, items} = req.body
+       for (let i =0; i < quantityItems; i++){
+        pantryItem.ingredients=items[i].itemName
+        pantryItem.quantity=items[i].quantity
+        pantryItem.expiration=items[i].expiration
+        pantryItem.id = pantryId
+        pantry.push(pantryItem)
+        pantryId++
+       }
+       console.log(pantry)
+       res.send(pantry)
+    },
+
     getPicture: (req,res) => {
         let {id} = req.params
         id=parseInt(id[1])
@@ -32,6 +55,7 @@ module.exports = {
 
     updatePantry: (req,res) => {
         const {id, type} = req.body
+        
         if (type === "minus"){
             for (let i =0; i< pantry.length; i++){
                 if (pantry[i].id === id){

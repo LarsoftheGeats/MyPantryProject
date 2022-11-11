@@ -16,7 +16,8 @@ const {landingPage,
     getRecipe, 
     getPicture,
     getPantry,
-    updatePantry
+    updatePantry,
+    addPantry
 } = require("./controller/pageControl.js")
 
 
@@ -31,6 +32,7 @@ app.get("/recipestuff",getRecipe)
 app.get("/jpg:id",getPicture)
 app.get("/pantrydata",getPantry)
 app.put("/pantry",updatePantry)
+app.post("/addPantry",addPantry)
 
 
 app.listen(port, () => console.log(`Server listening on ${port}`))
