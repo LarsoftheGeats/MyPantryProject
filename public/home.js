@@ -5,6 +5,7 @@ const pauseButton = document.getElementById("pause")
 const ingredientsBox=document.getElementById("ingredients")
 const recipeBox=document.getElementById("recipe")
 const yummyViewBox=document.getElementById("yummy-view")
+const instructionsBox=document.getElementById("instructions")
 const baseURL = `http://localhost:5050/`
 
 
@@ -17,6 +18,7 @@ function myTimerFnc() {
         console.log(res.data)
         ingredientsBox.innerHTML = res.data.ingredients
         recipeBox.innerHTML = res.data.recipe
+        instructionsBox.innerHTML = res.data.instructions
         index = res.data.image
         yummyViewBox.innerHTML = `<img src = "./meal${index}.jpg"/>`
         })

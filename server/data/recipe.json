@@ -1,25 +1,29 @@
 [
     {
-        "recipe": "random text",
+        "recipe": "recipe1",
         "ingredients": ["2 cans of chicken soup", "1 leek", "paprika"],
+        "instructions": ["In order to make this you need to mix well"],
         "image":1
     },
 
     {
-        "recipe": "random text2",
-        "ingredients": ["2 cans of chicken soup", "1 leek", "paprika"],
+        "recipe": "recipe2",
+        "ingredients": ["eggs, 2", "1 leek", "paprika"],
+        "instructions": ["Add Eggs milk, chesse, vanilla, sugar to taste, and cinammon."],
         "image":2
     },
 
     {
-        "recipe": "random text3",
+        "recipe": "recipe3",
         "ingredients": ["2 cans of chicken soup", "1 leek", "paprika"],
+        "instructions": ["Add Eggs milk, chesse, vanilla, sugar to taste, and cinammon."],
         "image":3
     },
 
     {
-        "recipe": "random text4",
+        "recipe": "recipe4",
         "ingredients": ["2 cans of chicken soup", "1 leek", "paprika"],
+        "instructions": ["Add Eggs milk, chesse, vanilla, sugar to taste, and cinammon."],
         "image":4
     }
 ]
