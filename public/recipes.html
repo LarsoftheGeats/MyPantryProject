@@ -18,13 +18,16 @@
     </header>
     RECIPEEEEES
     <section class = "mainFrame">
-    <article>
-        <textarea name="instructionsIn" id="instructions_input" class = "data_in" cols="60" rows="10"></textarea>
+    <div class = "recipe-box" id = "recipe-box">
+        Recipe name:<header id="recipe-name"></header>
+        <article>
+            <textarea name="instructionsIn" id="instructions_input" class = "data_in" cols="60" rows="10"></textarea>
     </article>
     <aside id = "add-ingredients" >
         Food:<input id= "food1" type="text">   Quantity <input id ="quantity1" type="text">
         
     </aside><br>
+    </div>
     <button id="submit-food">submit</button>
     </section>   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>

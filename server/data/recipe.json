@@ -1,32 +1,56 @@
 [
     {
-        "recipe": "recipe1",
-        "ingredients": ["2 cans of chicken soup", "1 leek", "paprika"],
-        "instructions": ["In order to make this you need to mix well"],
+        "recipe": "leek soup",
+        "ingredients": [
+            {"name": "chicken stock", "quantity": 2}, 
+            {"name": "leeks", "quantity": 1}, 
+            {"name": "potatoes", "quantity": 4},
+            {"name": "allspice", "quantity": 1}, 
+            {"name": "pepper", "quantity": 1} ],
+        "instructions": ["In order to make this you need to mix well, and allow to simmer"],
         "image":1,
         "id":1
     },
 
     {
-        "recipe": "recipe2",
-        "ingredients": ["eggs, 2", "1 leek", "paprika"],
-        "instructions": ["Add Eggs milk, chesse, vanilla, sugar to taste, and cinammon."],
+        "recipe": "meatwrap",
+        "ingredients": [
+            {"name": "turkey breast", "quantity":2},
+            {"name": "flour tortilla", "quantity":1},
+            {"name": "avocado", "quantity":1},
+            {"name": "tomato", "quantity":1}
+            ],
+        "instructions": ["Cook turkey breast and shred, slice tomato, puree avocado into a paste.  Slather avacodo and tortilla.  Add turkey breast and tomato to your preference."],
         "image":2,
         "id":2
     },
 
     {
-        "recipe": "recipe3",
-        "ingredients": ["2 cans of chicken soup", "1 leek", "paprika"],
-        "instructions": ["Add Eggs milk, chesse, vanilla, sugar to taste, and cinammon."],
+        "recipe": "Omelette",
+        "ingredients": [
+            {"name": "eggs", "quantity":4},   
+            {"name": "cheese", "quantity":1},   
+            {"name": "bacon", "quantity":2},   
+            {"name": "garlic powder", "quantity":1},   
+            {"name": "tomato", "quantity":1}   
+        ],
+        "instructions": ["Mix eggs thoroughly.  Preheat pan and add a small amount of butter. Dice Tomato, shred bacon"],
         "image":3,
         "id":3
     },
 
     {
-        "recipe": "recipe4",
-        "ingredients": ["2 cans of chicken soup", "1 leek", "paprika"],
-        "instructions": ["Add Eggs milk, chesse, vanilla, sugar to taste, and cinammon."],
+        "recipe": "sammich",
+        "ingredients": [
+            {"name": "rye bread", "quantity":1},   
+            {"name": "cheese", "quantity":1},   
+            {"name": "bacon", "quantity":2},   
+            {"name": "tomato", "quantity":1},   
+            {"name": "mayonnaise", "quantity":1},   
+            {"name": "lettuce", "quantity":1},   
+            {"name": "mayonnaise", "quantity":1}  
+        ],
+        "instructions": ["Spread mayonaaise on bread and cook in pan til golden brown.  Add ingredients and enjoy"],
         "image":4,
         "id":4
     }

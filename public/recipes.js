@@ -5,6 +5,7 @@ const quantityInputText = (document.getElementById("quantity1"))
 const ingredientsBox=document.getElementById("add-ingredients")
 const recipeListBox = document.createElement('section')
 const mainFrame = document.getElementsByClassName("mainFrame")[0]
+const recipeBox=document.getElementById('recipe-box')
 console.log(mainFrame)
 mainFrame.appendChild(recipeListBox)
 recipeListBox.setAttribute('display','none')
@@ -34,6 +35,7 @@ function renderRecipe(obj) {
     wrapper.style.display="block"
     wrapper.style.width
     recipeListBox.appendChild(wrapper)
+    recipeBox.style.display="none"
     console.log('hello')
 }
 function postRecipe() {
@@ -47,6 +49,8 @@ function getRecipe(evt ) {
     axios.get(`./recipe:${id}`)
     .then( (res) => {
         console.log(res.data)
+        recipeListBox.style.display="none"
+        recipeBox.style.display="inline"
     })
     .catch( (err) => {
         console.log(err)
