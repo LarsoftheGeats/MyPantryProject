@@ -19,6 +19,23 @@ module.exports = {
         res.send(recipe[index])
     },
 
+    getRecipeDetails: (req,res) => {
+        let {id} = req.params
+        id = id.split(':')
+        id = parseInt(id[1])
+        //console.log(id)
+        for (let index=0; index <recipe.length; index++){
+            if (recipe[index].id===id){
+                //console.log(recipe[index])
+                res.send(recipe[index])
+                return
+            }
+            
+        }
+        console.log('file not found on the database')
+        res.status(404).send('id does not match any database item')
+    },
+
     addPantry: (req,res) => {
        //console.log(req.body) 
     //    console.log(req.body)
@@ -51,6 +68,24 @@ module.exports = {
 
     getPantry:(req,res) => {
         res.send(pantry)
+    },
+
+    getSpecRecipe: (req,res) => {
+
+    },
+
+    getAllRecipeNames: (req,res) => {
+        let responseArray = []
+        for (let i =0; i < recipe.length; i++){
+            let resObj={
+                name:"",
+                id:0
+            }
+            resObj.name=recipe[i].recipe
+            resObj.id=recipe[i].id
+            responseArray.push(resObj)
+        }
+        res.send(responseArray)
     },
 
     updatePantry: (req,res) => {

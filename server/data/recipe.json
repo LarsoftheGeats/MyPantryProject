@@ -3,27 +3,31 @@
         "recipe": "recipe1",
         "ingredients": ["2 cans of chicken soup", "1 leek", "paprika"],
         "instructions": ["In order to make this you need to mix well"],
-        "image":1
+        "image":1,
+        "id":1
     },
 
     {
         "recipe": "recipe2",
         "ingredients": ["eggs, 2", "1 leek", "paprika"],
         "instructions": ["Add Eggs milk, chesse, vanilla, sugar to taste, and cinammon."],
-        "image":2
+        "image":2,
+        "id":2
     },
 
     {
         "recipe": "recipe3",
         "ingredients": ["2 cans of chicken soup", "1 leek", "paprika"],
         "instructions": ["Add Eggs milk, chesse, vanilla, sugar to taste, and cinammon."],
-        "image":3
+        "image":3,
+        "id":3
     },
 
     {
         "recipe": "recipe4",
         "ingredients": ["2 cans of chicken soup", "1 leek", "paprika"],
         "instructions": ["Add Eggs milk, chesse, vanilla, sugar to taste, and cinammon."],
-        "image":4
+        "image":4,
+        "id":4
     }
 ]

@@ -1,0 +1,17 @@
+Recipe page
+
+Default page, dropdown menu with my recipes.
+
+button add recipe clears everything, adds input text boxes, 
+to default layuot
+
+post recipe.  verifies that all elements are in the recipe.  and 
+adds the recipe to the backend.  
+delete recipe. removes recipe from the back end.  
+
+
+getRecipe 
+get request that gets all the details of this recipe
+then renders recipe
+render recipe
+adds ingredients and instructions to display

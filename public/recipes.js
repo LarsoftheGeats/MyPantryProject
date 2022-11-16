@@ -3,12 +3,76 @@
 const foodInputText = (document.getElementById("food1"))
 const quantityInputText = (document.getElementById("quantity1"))
 const ingredientsBox=document.getElementById("add-ingredients")
+const recipeListBox = document.createElement('section')
+const mainFrame = document.getElementsByClassName("mainFrame")[0]
+console.log(mainFrame)
+mainFrame.appendChild(recipeListBox)
+recipeListBox.setAttribute('display','none')
 let globalID = 1;//global id
+let buttonMinusArr=[]
+let buttonPlusArr=[]
 import {ListNode, LinkList} from './linklist.mjs'
-
+let foodList = []
+let instructionList = []
 let linkNode = new ListNode(0)
 let list = new LinkList(linkNode)
 list.length=0
+
+function renderRecipe(obj) {
+    let {name,id} = obj
+    let recipe = document.createElement('p')
+    let button = document.createElement('button')
+    let wrapper = document.createElement('div')
+    button.id=`select_${id}`
+    button.textContent='select'
+    
+    button.addEventListener('click',getRecipe)
+    wrapper.appendChild(button)
+    recipe.textContent=name
+    console.log(name)
+    wrapper.appendChild(recipe)
+    wrapper.style.display="block"
+    wrapper.style.width
+    recipeListBox.appendChild(wrapper)
+    console.log('hello')
+}
+function postRecipe() {
+
+}
+function getRecipe(evt ) {
+    evt.preventDefault()
+    let targetID = evt.target.id
+    let id = parseInt(targetID.split('_')[1])
+    console.log(`./recipe:${id}`)
+    axios.get(`./recipe:${id}`)
+    .then( (res) => {
+        console.log(res.data)
+    })
+    .catch( (err) => {
+        console.log(err)
+    })
+
+}
+
+function getRecipeNames() {
+    console.log('hello')
+    axios.get('./recipes')
+    .then((res) => {
+        const {data}=res
+        console.log(res.data)
+        if (data.length===0){
+            alert("no recipes added yet, please add some")
+            return
+        }
+        for (let i = 0; i< data.length; i++){
+            console.log('hello')
+            renderRecipe(data[i])
+        }
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
 
 function updateQuantity(evt){
     evt.preventDefault()
@@ -16,44 +80,37 @@ function updateQuantity(evt){
     let str=evt.target.id.split('_')
     let type=str[0]
     let id=parseInt(str[1])
-    let node = list.head
+    console.log(type+" "+id)
     let offset = -1;
-    if (type === 'plus'){
+    if (type ==='plus'){
         offset = 1;
-    } 
-    let continueLoop=true
-    let index=0;
-    while (node!== null&&continueLoop){
-        if (node.nodeData.id === id){
-            node.nodeData.quantity+=offset
-            continueLoop=false
-            if (node.nodeData.quantity===0){
-                list.removeElement(index)
-            }
-            
-        }
-        node=node.nextNode
-        index++
     }
-    
+    for (let i=0; i<foodList.length; i++){
+        if (id = foodList[i].id){
+            foodList[i].quantity+=offset
+        }
+    }
+
 }
 //TODO fix this
 function createFoodCard(foodItem){
     let foodCard = document.createElement('div')
     foodCard.classList.add('food-card')
-    foodCard.id
     let {ingredients, quantity, id} = foodItem
+    foodCard.id=`ingredient_${id}`
     foodCard.innerHTML = 
-    `<p>ingredient: ${ingredients} <br>
+    `<br><p>ingredient: ${ingredients} <br>
     <button id='minus_${id}')">-</button>
     quantity: ${quantity} 
     <button id='plus_${id}')">+</button>
     <br></p>`
     ingredientsBox.appendChild(foodCard)
-    let buttonPlus=document.getElementById(`plus${id}`)
-    let buttonMinus=document.getElementById(`minus${id}`)
+    let buttonPlus=document.getElementById(`plus_${id}`)
+    let buttonMinus=document.getElementById(`minus_${id}`)
     buttonPlus.addEventListener('click',updateQuantity)
     buttonMinus.addEventListener('click',updateQuantity)
+    buttonMinusArr.push(buttonMinus)
+    buttonPlusArr.push(buttonPlus)
     
 }
 
@@ -78,21 +135,18 @@ quantityInputText.addEventListener("keyup", (evt) => {
         const foodObj = {
             ingredients: ingredientName,
             quantity:ingredientQuantity,
-            id: globalID
+            id: globalID,
+            upladed: false
         }
         globalID++
         //console.log(ingredientName+" "+ingredientQuantity)
         createFoodCard(foodObj)
-        if (list.length===0){
-            list.head.nodeData=foodObj
-            list.length++
-            return
-        }
-        let foodNode = new ListNode(foodObj)
-        list.pushElement(foodNode)
+        foodList.push(foodObj)
         foodInputText.value=""
         quantityInputText.value=""
     }
+    //console.log(foodList)
 
 })
 
+getRecipeNames()

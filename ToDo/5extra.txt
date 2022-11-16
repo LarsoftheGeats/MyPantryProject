@@ -1,0 +1,4 @@
+sql communication
+types of ingredients both front and backend for pantry and request 
+add radio buttons
+add animated time function for recipe switch

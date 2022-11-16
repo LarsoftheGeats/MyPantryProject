@@ -17,7 +17,9 @@ const {landingPage,
     getPicture,
     getPantry,
     updatePantry,
-    addPantry
+    addPantry,
+    getAllRecipeNames,
+    getRecipeDetails
 } = require("./controller/pageControl.js")
 
 
@@ -31,6 +33,8 @@ app.get("/", landingPage )
 app.get("/recipestuff",getRecipe)
 app.get("/jpg:id",getPicture)
 app.get("/pantrydata",getPantry)
+app.get("/recipes",getAllRecipeNames)
+app.get("/recipe:id",getRecipeDetails)
 app.put("/pantry",updatePantry)
 app.post("/addPantry",addPantry)
 
