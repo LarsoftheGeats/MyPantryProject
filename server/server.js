@@ -19,7 +19,8 @@ const {landingPage,
     updatePantry,
     addPantry,
     getAllRecipeNames,
-    getRecipeDetails
+    getRecipeDetails,
+    addRecipe
 } = require("./controller/pageControl.js")
 
 
@@ -37,6 +38,7 @@ app.get("/recipes",getAllRecipeNames)
 app.get("/recipe:id",getRecipeDetails)
 app.put("/pantry",updatePantry)
 app.post("/addPantry",addPantry)
+app.post("/addRecipe",addRecipe)
 
 
 app.listen(port, () => console.log(`Server listening on ${port}`))

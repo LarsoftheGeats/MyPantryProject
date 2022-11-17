@@ -2,6 +2,7 @@ const path = require("path")
 const recipe = require("../data/recipe.json")
 const pantry = require("../data/pantry.json")
 let pantryId=7
+let recipeId=5
 
 
 //Documentation
@@ -35,6 +36,32 @@ module.exports = {
         console.log('file not found on the database')
         res.status(404).send('id does not match any database item')
     },
+
+    addRecipe: (req,res) =>{
+       try
+        {let
+            {
+                recipe:recipeName,
+                ingredients,
+                instructions,
+                image,
+            } = req.body
+            recipeObj = {
+                'recipe':recipeName,
+                'ingredients':ingredients,
+                'instructions':instructions,
+                'image':image,
+                id:recipeId
+                }
+            recipeId++
+            recipe.push(recipeObj)
+            getAllRecipeNames()}
+            catch( err ){
+                res.send(err)
+
+        }
+    },
+    
 
     addPantry: (req,res) => {
        //console.log(req.body) 

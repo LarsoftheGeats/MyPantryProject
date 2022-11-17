@@ -4,22 +4,28 @@ const foodInputText = (document.getElementById("food1"))
 const quantityInputText = (document.getElementById("quantity1"))
 const ingredientsBox=document.getElementById("add-ingredients")
 const recipeListBox = document.createElement('section')
+const recipeTitle = document.getElementById('recipe-name')
 const mainFrame = document.getElementsByClassName("mainFrame")[0]
 const recipeBox=document.getElementById('recipe-box')
+const instructionsBox = document.getElementById("instructions_input")
+const submitButton = document.getElementById('submit-food')
+
+//instructionsBox.style.overflow='auto'
+let newRecipe = true;
 console.log(mainFrame)
 mainFrame.appendChild(recipeListBox)
 recipeListBox.setAttribute('display','none')
 let globalID = 1;//global id
 let buttonMinusArr=[]
 let buttonPlusArr=[]
-import {ListNode, LinkList} from './linklist.mjs'
+//import {ListNode, LinkList} from './linklist.mjs'
 let foodList = []
 let instructionList = []
-let linkNode = new ListNode(0)
-let list = new LinkList(linkNode)
-list.length=0
+// let linkNode = new ListNode(0)
+// let list = new LinkList(linkNode)
+//list.length=0
 
-function renderRecipe(obj) {
+function renderRecipeName(obj) {
     let {name,id} = obj
     let recipe = document.createElement('p')
     let button = document.createElement('button')
@@ -39,18 +45,49 @@ function renderRecipe(obj) {
     console.log('hello')
 }
 function postRecipe() {
+    let postBody = {
+        recipe:'',
+        ingredients:[],
+        instructions:[],
+        image:''
+    }
+    postBody.recipe=recipeTitle.textContent
+    for (let i=0; i<foodList.length; i++){
+        ingredients.push(foodList[i])
+    }
+    if (newRecipe){
+        axios.post('')
+    }
 
 }
 function getRecipe(evt ) {
     evt.preventDefault()
     let targetID = evt.target.id
     let id = parseInt(targetID.split('_')[1])
-    console.log(`./recipe:${id}`)
+    //console.log(`./recipe:${id}`)
     axios.get(`./recipe:${id}`)
     .then( (res) => {
-        console.log(res.data)
+        foodList = []
+        //console.log(res.data)
         recipeListBox.style.display="none"
         recipeBox.style.display="inline"
+        let currentRecipe = res.data
+        for (let i =0; i< currentRecipe.ingredients.length; i++){
+            let foodObj={
+                id:0,
+                quantity:0,
+                ingredients:""
+            }
+            foodObj.id=i;
+            foodObj.quantity=currentRecipe.ingredients[i].quantity;
+            foodObj.ingredients=currentRecipe.ingredients[i].name;
+            createFoodCard(
+                foodObj)
+            
+        } 
+        recipeTitle.textContent=res.data.recipe
+        instructionsBox.placeholder=res.data.instructions[0]
+        
     })
     .catch( (err) => {
         console.log(err)
@@ -69,8 +106,8 @@ function getRecipeNames() {
             return
         }
         for (let i = 0; i< data.length; i++){
-            console.log('hello')
-            renderRecipe(data[i])
+            //console.log('hello')
+            renderRecipeName(data[i])
         }
     })
     .catch((err) => {
@@ -80,24 +117,27 @@ function getRecipeNames() {
 
 function updateQuantity(evt){
     evt.preventDefault()
-    console.log(evt.target.id)
+    //console.log(evt.target.id)
     let str=evt.target.id.split('_')
     let type=str[0]
     let id=parseInt(str[1])
-    console.log(type+" "+id)
+    //console.log(type+" "+id)
     let offset = -1;
     if (type ==='plus'){
         offset = 1;
     }
     for (let i=0; i<foodList.length; i++){
-        if (id = foodList[i].id){
+        if (id === foodList[i].id){
             foodList[i].quantity+=offset
+            //console.log(i)
         }
     }
+    console.log(foodList)
 
 }
 //TODO fix this
 function createFoodCard(foodItem){
+    foodList.push(foodItem)
     let foodCard = document.createElement('div')
     foodCard.classList.add('food-card')
     let {ingredients, quantity, id} = foodItem
@@ -153,4 +193,5 @@ quantityInputText.addEventListener("keyup", (evt) => {
 
 })
 
+submitButton.addEventListener('click',postRecipe)
 getRecipeNames()
