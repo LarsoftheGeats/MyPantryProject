@@ -8,7 +8,7 @@
             {"name": "allspice", "quantity": 1}, 
             {"name": "pepper", "quantity": 1} ],
         "instructions": ["In order to make this you need to mix well, and allow to simmer"],
-        "image":1,
+        "image":"meal1.bmp",
         "id":1
     },
 
@@ -21,7 +21,7 @@
             {"name": "tomato", "quantity":1}
             ],
         "instructions": ["Cook turkey breast and shred, slice tomato, puree avocado into a paste.  Slather avacodo and tortilla.  Add turkey breast and tomato to your preference."],
-        "image":2,
+        "image":"meal2.bmp",
         "id":2
     },
 
@@ -35,7 +35,7 @@
             {"name": "tomato", "quantity":1}   
         ],
         "instructions": ["Mix eggs thoroughly.  Preheat pan and add a small amount of butter. Dice Tomato, shred bacon"],
-        "image":3,
+        "image":"meal3.bmp",
         "id":3
     },
 
@@ -51,7 +51,20 @@
             {"name": "mayonnaise", "quantity":1}  
         ],
         "instructions": ["Spread mayonaaise on bread and cook in pan til golden brown.  Add ingredients and enjoy"],
-        "image":4,
+        "image":"meal4.bmp",
         "id":4
+    },
+    {
+        "recipe": "Jello Fish",
+        "ingredients": [
+            {"name": "Blue Jello", "quantity":1},   
+            {"name": "Swedish Fish", "quantity":1},   
+            {"name": "whip cream", "quantity":1},   
+            {"name": "mini marshmallows", "quantity":1}  
+
+        ],
+        "instructions": ["Mix Jello according to package directions.  Pour jello over marshmallows, Allow jello to set for 2 hours, press swedish fish into conjealing jello When dish is fully cured apply a light dusting of whip cream to simulate waves.   "],
+        "image":"jelloFish.bmp",
+        "id":5
     }
 ]

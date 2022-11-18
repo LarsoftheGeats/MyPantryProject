@@ -29,8 +29,7 @@ function createFoodCard(foodItem){
     <button onclick="updateQuantity(${id}, 'minus')">-</button>
     quantity: ${quantity} 
     <button onclick="updateQuantity(${id}, 'plus')">+</button>
-    <br>
-    expiration ${expiration}</p>`
+    <br>`
     ingredientsBox.appendChild(foodCard)
 }
 

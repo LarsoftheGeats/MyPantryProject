@@ -2,7 +2,9 @@ const path = require("path")
 const recipe = require("../data/recipe.json")
 const pantry = require("../data/pantry.json")
 let pantryId=7
-let recipeId=5
+let recipeId=6
+let get_jello=0
+
 
 
 //Documentation
@@ -14,10 +16,17 @@ module.exports = {
     },
 
     getRecipe: (req,res) => {
+        get_jello++
         
-        index=Math.floor(Math.random()*4)
+        index=Math.floor(Math.random()*recipe.length)
+        if (get_jello==5)
+        {
+            index=4
+            get_jello=0;
+        }
+        if (get_jello==2){index=4}
         //console.log(recipe[index])
-        res.send(recipe[index])
+        res.send(recipe[index]).status(200)
     },
 
     getRecipeDetails: (req,res) => {
@@ -51,17 +60,70 @@ module.exports = {
                 'ingredients':ingredients,
                 'instructions':instructions,
                 'image':image,
-                id:recipeId
+                'id':recipeId
                 }
             recipeId++
             recipe.push(recipeObj)
-            getAllRecipeNames()}
+            console.log(recipe)
+            res.send("all good").status(200)}
             catch( err ){
                 res.send(err)
 
         }
     },
+    getNextId: (req,res) =>{
+        res.send(recipeId)
+    },
+
+    deleteRecipe: (req,res) => {
+        let {id}=req.params
+        id = parseInt(id.split(':')[1])
+        try{
+            for (let i =0; i< recipe.length; i++){
+                if (recipe[i].id===id){
+                    recipe.splice(i,1)
+                }
+            }
+            recipe.splice(id,1)
+            res.status(200).send("success")}
+            catch{
+                res.status(404).send("error deleting")
+            }
+        
+    },
     
+    updateRecipe: (req,res) =>{
+    let
+        {
+            recipe:recipeName,
+            ingredients,
+            instructions,
+            image,
+            id
+        } = req.body
+        console.log("req.body" + recipeName + " " + ingredients + " " + id +" "+instructions)
+        for (let i =0; i < recipe.length; i++){
+            if (id===recipe[i].id){
+                console.log("found " + id+ " "+recipe[i])
+                recipe[i].recipe=recipeName
+                recipe[i].image=image
+                recipe[i].ingredients = []
+                recipe[i].instructions = []
+                for (let j = 0; j < ingredients.length; j++){
+                    recipe[i].ingredients.push(ingredients[j])
+                    console.log("pushing" + recipe[i].ingredients[j].name)
+                }
+                console.log(recipe[i].instructions)
+                for (j = 0; j < instructions.length; j++){
+                    recipe[i].instructions.push(instructions[j])
+                }
+                console.log(recipe[i].instructions)
+                console.log(recipe[i])
+                res.send("").status(200)
+            }
+        }
+        //res.send('recipe not found').status(404)
+    },
 
     addPantry: (req,res) => {
        //console.log(req.body) 

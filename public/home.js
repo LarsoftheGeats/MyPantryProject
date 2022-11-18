@@ -12,15 +12,18 @@ const baseURL = `http://localhost:5050/`
 
 //timer that periodically serves a random recipe
 function myTimerFnc() {
-    let index
     axios.get("/recipestuff")
     .then((res) => {
+        ingredientsBox.innerHTML=''
         console.log(res.data)
-        ingredientsBox.innerHTML = res.data.ingredients
-        recipeBox.innerHTML = res.data.recipe
-        instructionsBox.innerHTML = res.data.instructions
-        index = res.data.image
-        yummyViewBox.innerHTML = `<img src = "./meal${index}.jpg"/>`
+        const {ingredients, recipe, instructions, image}=res.data
+        for (let i = 0; i< ingredients.length; i++){
+            createFoodCard(ingredients[i])
+        }
+        recipeBox.innerHTML = recipe
+        instructionsBox.innerHTML = instructions
+        yummyViewBox.innerHTML = `<img src = "./${image}"/>`
+        
         })
     .catch((err) => {
         console.log(err)
@@ -31,6 +34,18 @@ function myTimerFnc() {
     // const d = new Date();
     // yummyViewBox.innerHTML = d.toLocaleTimeString();
  }
+
+ function createFoodCard(foodItem){
+    console.log(foodItem)
+    let foodCard = document.createElement('div')
+    foodCard.classList.add('food-card')
+    let {name, quantity} = foodItem
+    foodCard.innerHTML = 
+    `<p>ingredient: ${name} <br>
+    quantity: ${quantity} 
+    <br>`
+    ingredientsBox.appendChild(foodCard)
+}
 
 
 function togglePause(evt){

@@ -20,18 +20,18 @@
 	        <div class = "wrapper"><a href="/request.html">Request</a></div>
 	    </nav>
     </header>
-    PAAAANTRY RAID
 
     <!--TODO Flexbox these puppies-->
     <section class = "mainFrame">
     <aside id= "ingredients"></aside>
     <article id = "recipe"></article>
-    <aside id = "yummy-view"></aside>
+    <aside id = "yummy-view">
+        <form id = "add-items" action="submit">
+            Food:<input id= "food1" type="text">   Quantity <input id ="quantity1" type="text">
+            <button id="submit-food">submit</button>
+        </form>
+    </aside>
     
-    <form id = "add-items" action="submit">
-        Food:<input id= "food1" type="text">   Quantity <input id ="quantity1" type="text">
-        <button id="submit-food">submit</button>
-    </form>
     </section>
 
     <button id="pause">Pause</button>
